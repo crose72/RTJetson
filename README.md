@@ -4,9 +4,10 @@ Preempt-RT Kernel Build Guide for NVIDIA Development Board
 
 The system used to build the image is Ubuntu 20.04.6 LTS, which is recommended because the current version of L4T is based on Ubuntu 20.04.
 
-- Jetpack version: 5.1.1
-- Jetson Linux version: 35.3.1
-- Linux Kernel version: 5.10
+- Jetpack version: 6.0
+- Jetson Linux version: 36.3.0
+- Linux Kernel version: 5.15
+- GCC Toolchain: 11.3
 
 This guide and this [Reference](https://forums.developer.nvidia.com/t/preempt-rt-patches-for-jetson-nano/72941/10) only tested on the Xavier developer kit and Jetson Nano development board.
 
@@ -28,41 +29,40 @@ The only thing to note is that a specific version of L4T and related source code
 
 ## Download the following files in the nvidia-rt folder:
 
-- [L4T Jetson Driver Package](https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v3.1/release/jetson_linux_r35.3.1_aarch64.tbz2)
+- [L4T Jetson Driver Package](https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v3.0/release/Jetson_Linux_R36.3.0_aarch64.tbz2)
 
-- [L4T Sample Root File System](https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v3.1/release/tegra_linux_sample-root-filesystem_r35.3.1_aarch64.tbz2)
+- [L4T Sample Root File System](https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v3.0/release/Tegra_Linux_Sample-Root-Filesystem_R36.3.0_aarch64.tbz2)
 
-- [L4T Sources](https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v3.1/sources/public_sources.tbz2)
+- [L4T Sources](https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v3.0/sources/public_sources.tbz2)
 
-- [GCC Tool Chain for 64-bit BSP](https://developer.nvidia.com/embedded/jetson-linux/bootlin-toolchain-gcc-93)
+- [GCC Tool Chain for 64-bit BSP](https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2)
 
 
 ## Extract files
 
-	sudo tar xpf Jetson_Linux_R35.3.1_aarch64.tbz2 
+	sudo tar xpf Jetson_Linux_R36.3.0_aarch64.tbz2 
 	cd Linux_for_Tegra/rootfs/ 
-	sudo tar xpf ../../Tegra_Linux_Sample-Root-Filesystem_R35.3.1_aarch64.tbz2
+	sudo tar xpf ../../Tegra_Linux_Sample-Root-Filesystem_R36.3.0_aarch64.tbz2
 	cd ../../ 
-	tar -xvf aarch64--glibc--stable-final.tar.gz
+	tar -xvf aarch64--glibc--stable-2022.08-1.tar.bz2
 	sudo tar -xjf public_sources.tbz2
-	tar -xjf Linux_for_Tegra/source/public/kernel_src.tbz2
+	tar -xjf Linux_for_Tegra/source/kernel_src.tbz2
 
 ## Apply PREEMPT-RT patches
 
-	cd kernel/kernel-5.10/ 
-	./scripts/rt-patch.sh apply-patches 
+	sudo ./generic_rt_build.sh enable
 
 ## Compile kernel
 
 	TEGRA_KERNEL_OUT=kernel_out 
 	mkdir $TEGRA_KERNEL_OUT 
-	export CROSS_COMPILE=~/RTJetsonBuild/bin/aarch64-buildroot-linux-gnu-
+	export CROSS_COMPILE=$BUILD_DIR/aarch64--glibc--stable-2022.08-1/bin/aarch64-buildroot-linux-gnu-
 	make ARCH=arm64 O=$TEGRA_KERNEL_OUT tegra_defconfig 
 	make ARCH=arm64 O=$TEGRA_KERNEL_OUT menuconfig 
 
 ## This option should already be selected:
 
-	Kernel Features -> Preemption  Model: Fully Preemptible Kernel (RT)
+	General setup -> Preemption Model (Fully Preemptible Kernel (Real-Time))
 
 ## You can modify other options for your kernel, like the timer frequency (or anything you need):
 
