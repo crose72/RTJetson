@@ -29,6 +29,7 @@ tput sgr0
 TEGRA_KERNEL_OUT=kernel_out
 mkdir $TEGRA_KERNEL_OUT
 export CROSS_COMPILE=$BUILD_DIR/aarch64--glibc--stable-2022.08-1/bin/aarch64-buildroot-linux-gnu-
+cd kernel/kernel-jammy-src
 make ARCH=arm64 O=$TEGRA_KERNEL_OUT tegra_defconfig
 
 tput setaf 2
