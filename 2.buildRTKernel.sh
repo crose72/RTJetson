@@ -21,19 +21,19 @@ tar -xjf Linux_for_Tegra/source/kernel_src.tbz2
 tput setaf 2
 echo "Apply PREEMPT-RT patches"
 tput sgr0
-./generic_rt_build.sh enable
+sudo ./generic_rt_build.sh enable
 
 tput setaf 2
 echo "Compile kernel"
 tput sgr0
 TEGRA_KERNEL_OUT=kernel_out
 mkdir $TEGRA_KERNEL_OUT
-export CROSS_COMPILE=$BUILD_DIR/bin/aarch64-buildroot-linux-gnu-
+export CROSS_COMPILE=$BUILD_DIR/aarch64--glibc--stable-2022.08-1/bin/aarch64-buildroot-linux-gnu-
 make ARCH=arm64 O=$TEGRA_KERNEL_OUT tegra_defconfig
 
 tput setaf 2
 echo "Confirm if these config options are chosen."
-echo "Kernel Features -> Preemption  Model: Fully Preemptible Kernel (RT)"
+echo "General setup -> Preemption Model (Fully Preemptible Kernel (Real-Time))"
 echo "Kernel Features -> Timer frequency: 1000 HZ "
 echo "If not, choose them in menuconfig interface."
 echo "Else, quit menuconfig and compile will auto start."
