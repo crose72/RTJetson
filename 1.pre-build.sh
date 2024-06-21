@@ -10,7 +10,7 @@ tput sgr0
 sudo apt update && sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
 sudo apt install -y build-essential bc libncurses5-dev lbzip2 pkg-config flex bison libssl-dev qemu-user-static
 
-BUILD_DIR=~/RTJetsonBuild/R35.3.1
+BUILD_DIR=~/RTJetsonBuild/R36.3.0
 tput setaf 2
 echo "Create build folder to $BUILD_DIR"
 tput sgr0
@@ -21,9 +21,9 @@ cd $BUILD_DIR
 
 tput setaf 2
 echo "Manually download files from links below since NVIDIA's website need login..."
-echo "https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v3.1/release/jetson_linux_r35.3.1_aarch64.tbz2"
-echo "https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v3.1/release/tegra_linux_sample-root-filesystem_r35.3.1_aarch64.tbz2"
-echo "https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v3.1/sources/public_sources.tbz2"
-echo "https://developer.nvidia.com/embedded/jetson-linux/bootlin-toolchain-gcc-93"
+echo "https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v3.0/release/Jetson_Linux_R36.3.0_aarch64.tbz2"
+echo "https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v3.0/release/Tegra_Linux_Sample-Root-Filesystem_R36.3.0_aarch64.tbz2"
+echo "https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v3.0/sources/public_sources.tbz2"
+echo "https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2"
 echo "and put them into $BUILD_DIR folder"
 tput sgr0
