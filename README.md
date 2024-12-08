@@ -5,7 +5,7 @@ Preempt-RT Kernel Build Guide for NVIDIA Development Board
 The system used to build the image is Ubuntu 20.04.6 LTS, which is recommended because the current version of L4T is based on Ubuntu 20.04.
 
 - Jetpack version: 6.0
-- Jetson Linux version: 36.3.0
+- Jetson Linux version: 36.4.0
 - Linux Kernel version: 5.15
 - GCC Toolchain: 11.3
 
@@ -29,20 +29,20 @@ The only thing to note is that a specific version of L4T and related source code
 
 ## Download the following files in the nvidia-rt folder:
 
-- [L4T Jetson Driver Package](https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v3.0/release/Jetson_Linux_R36.3.0_aarch64.tbz2)
+- [L4T Jetson Driver Package](https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v4.0/release/Jetson_Linux_R36.4.0_aarch64.tbz2)
 
-- [L4T Sample Root File System](https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v3.0/release/Tegra_Linux_Sample-Root-Filesystem_R36.3.0_aarch64.tbz2)
+- [L4T Sample Root File System](https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v4.0/release/Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2)
 
-- [L4T Sources](https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v3.0/sources/public_sources.tbz2)
+- [L4T Sources](https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v4.0/sources/public_sources.tbz2)
 
 - [GCC Tool Chain for 64-bit BSP](https://developer.download.nvidia.cn/embedded/L4T/r36_Release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2)
 
 
 ## Extract files
 
-	sudo tar xpf Jetson_Linux_R36.3.0_aarch64.tbz2 
+	sudo tar xpf Jetson_Linux_R36.4.0_aarch64.tbz2 
 	cd Linux_for_Tegra/rootfs/ 
-	sudo tar xpf ../../Tegra_Linux_Sample-Root-Filesystem_R36.3.0_aarch64.tbz2
+	sudo tar xpf ../../Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2
 	cd ../../ 
 	tar -xvf aarch64--glibc--stable-2022.08-1.tar.bz2
 	sudo tar -xjf public_sources.tbz2

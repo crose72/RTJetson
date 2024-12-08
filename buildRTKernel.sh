@@ -4,15 +4,15 @@
 # Green is 2
 # Reset is sgr0
 
-BUILD_DIR=~/RTJetsonBuild/R36.3.0
+BUILD_DIR=~/RTJetsonBuild/R36.4.0
 cd $BUILD_DIR
 
 tput setaf 2
 echo "Extract files"
 tput sgr0
-sudo tar xpf Jetson_Linux_R36.3.0_aarch64.tbz2
+sudo tar xpf Jetson_Linux_R36.4.0_aarch64.tbz2
 cd Linux_for_Tegra/rootfs/
-sudo tar xpf ../../Tegra_Linux_Sample-Root-Filesystem_R36.3.0_aarch64.tbz2
+sudo tar xpf ../../Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2
 cd ../../
 tar -xvf aarch64--glibc--stable-2022.08-1.tar.bz2
 sudo tar -xjf public_sources.tbz2
